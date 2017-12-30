@@ -1,22 +1,20 @@
-[user]                                             
-   name = Daryl Metzler                            
-   email = daryl@ifixit.com                        
-[diff]                                             
-   noprefix = true                                 
+[user]
+	name = Daryl Metzler
+	email = djmetzle@ncsu.edu
+[diff]
+	noprefix = true
 
-[color]                                                                     
-   ui = true                                                                
-                                                                            
-[alias]                                                                     
-   st = status                                     
-# Nice graph of the history                                                 
-   lg   = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %
-s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative   
-# Nice graph of the history that includes HEAD and the upstream branch      
-   co = checkout                                                            
-   b = branch                                                               
-   d = diff                                                                 
-   dc = diff --cached                                                       
-                                                                            
-[pull]                                                                      
-   rebase = preserve                                                        
+[color]
+	ui = true
+
+[alias]
+	st = status
+	# Nice graph of the history
+	lg   = log --graph --abbrev-commit --date=relative
+	co = checkout
+	b = branch
+	d = diff
+	dc = diff --cached
+
+[pull]
+	rebase = preserve
