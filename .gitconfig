@@ -11,6 +11,7 @@
 	st = status
 	# Nice graph of the history
 	lg   = log --graph --abbrev-commit --date=relative
+   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative origin/master..HEAD
 	co = checkout
 	b = branch
 	d = diff
