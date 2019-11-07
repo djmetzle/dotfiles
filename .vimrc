@@ -22,12 +22,6 @@ set relativenumber
 :augroup END
 
 
-" Toggle paste mode.
-noremap <C-p> :set paste!<CR>
-
-" Nuke trailing whitespace
-noremap <C-\> :%s/\s\+$//e<CR>
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Highlighting
 
@@ -40,10 +34,34 @@ set t_Co=16
 "match OverLength '\%80v.\+'
 set colorcolumn=80
 
-set foldlevel=99
-
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+let g:tagbar_phpctags_bin='/home/djmetzle/bin/phpctags'
+nnoremap <Leader>w ::%s/\s\+$//e<CR>:nohl<CR>
+nnoremap <Leader>s :Gstatus<CR>
+nnoremap <Leader>d :Gvdiff<CR>
+nnoremap <Leader>j :term<CR>ps -eaf<CR>
+nnoremap <Leader>c :Gcommit -v<CR>
+nnoremap <Leader>H ::nohl<CR>
+nnoremap <Leader>z :FZF<CR>
+nnoremap <Leader>2 :set tabstop=2<CR>:set softtabstop=2<CR>:set shiftwidth=2<CR>
+nnoremap <Leader>3 :set tabstop=3<CR>:set softtabstop=3<CR>:set shiftwidth=3<CR>
+
+
+nnoremap <Leader>S :set spell!<CR>
+
+nmap <leader>p :CtrlP<CR>
+
+" Toggle paste mode.
+noremap <Leader>v :set paste!<CR>
+
+nmap <leader>l :bnext<CR>
+nmap <leader>h :bprev<CR>
+
+" Nuke trailing whitespace
+noremap <leader><Space> :%s/\s\+$//e<CR>:nohl<CR>
 
