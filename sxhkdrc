@@ -170,3 +170,6 @@ super + F1
 	bspc node -p east; \
 	bspc node -o 0.75; \
 	slack
+
+ctrl + alt + l
+	bspc desktop -f ^9; spectacle -b -n -f -o ~/wallpaper.png;  i3lock -i ~/wallpaper.png
