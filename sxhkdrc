@@ -96,6 +96,9 @@ super + bracket{left,right}
 alt + Tab
 	bspc node -f last .local
 
+ctrl + shift + v
+   copyq menu
+
 # focus the older or newer node in the focus history
 super + {o,i}
 	bspc wm -h off; \
