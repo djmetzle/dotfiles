@@ -6,6 +6,9 @@
 super + Return
 	terminator
 
+super + question
+   mate-calc
+
 super + BackSpace
 	google-chrome
 
