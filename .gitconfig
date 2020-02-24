@@ -1,21 +1,17 @@
 [user]
 	name = Daryl Metzler
 	email = djmetzle@ncsu.edu
-[diff]
-	noprefix = true
 
 [color]
 	ui = true
 
 [alias]
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative master..HEAD
+	lg   = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	st = status
-	# Nice graph of the history
-	lg   = log --graph --abbrev-commit --date=relative
-   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative origin/master..HEAD
 	co = checkout
 	b = branch
 	d = diff
 	dc = diff --cached
-
-[pull]
-	rebase = preserve
+	ap = add --patch
+	shit = reset
