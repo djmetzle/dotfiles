@@ -13,9 +13,15 @@ super + BackSpace
 super + @space
 	dmenu_run
 
+super + c
+   mate-control-center
+
 # file browser
 super + backslash
 	caja
+
+super + grave
+   flameshot gui
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -60,8 +66,8 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,s,f}
-	bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+super + {t,shift + t,f}
+	bspc node -t {tiled,pseudo_tiled,floating}
 
 # set the node flags
 super + ctrl + {x,y,z}
@@ -78,10 +84,6 @@ super + {_,shift + }{h,j,k,l}
 # focus the node for the given path jump
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
-
-# focus the next/previous node in the current desktop
-super + {_,shift + }c
-	bspc node -f {next,prev}.local
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
@@ -150,6 +152,9 @@ super + ctrl + {comma,period}
 # balance
 super + ctrl + b
 	bspc node -B
+
+ctrl + shift + v
+   copyq menu
 
 super + F1
 	google-chrome; \

@@ -1,4 +1,4 @@
 #!/bin/bash
 set -exuo pipefail
 
-dnf -y install stow
+dnf -y install stow flameshot
