@@ -1,8 +1,16 @@
-" Pathogen vim plugin loading - https://github.com/tpope/vim-pathogen
 call pathogen#infect()
 
-filetype on              " Recognize syntax by file extension.
+set nocompatible
+filetype plugin on              " Recognize syntax by file extension.
 syntax on                " Syntax highlighting.
+
+augroup filetype javascript syntax=javascript
+
+set path=.,,~/Code/**
+" For `gf` jumps
+set suffixesadd=.php,.js,.hbs,.go,.css,.less,.phtml,.ptxt,.vcl,.conf
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+set rtp+=/usr/share/nvim/site/plugin/fzf.vim
 
 set expandtab             " Expand tabs with spaces.
 set ruler                 " Display row, column and % of document.
@@ -39,6 +47,20 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
+" eslint stuff
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
+"let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_quiet_messages = {'level': 'warnings'}
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+
+let g:ale_linters = { 'php': ['php', 'psalm'] }
+let g:ale_linters_explicit = 1
+
+let g:terraform_align=1
+let g:terraform_fmt_on_save=1
+
 nnoremap <Leader>f :NERDTreeToggle<Enter>
 let g:tagbar_phpctags_bin='/home/djmetzle/bin/phpctags'
 nnoremap <Leader>w ::%s/\s\+$//e<CR>:nohl<CR>
@@ -54,7 +76,7 @@ nnoremap <Leader>3 :set tabstop=3<CR>:set softtabstop=3<CR>:set shiftwidth=3<CR>
 
 nnoremap <Leader>S :set spell!<CR>
 
-nmap <leader>p :CtrlP<CR>
+nmap <leader>p :exec prettier<CR>
 
 " Toggle paste mode.
 noremap <Leader>v :set paste!<CR>
@@ -64,4 +86,3 @@ nmap <leader>h :bprev<CR>
 
 " Nuke trailing whitespace
 noremap <leader><Space> :%s/\s\+$//e<CR>:nohl<CR>
-
