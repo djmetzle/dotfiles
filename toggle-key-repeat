@@ -1,0 +1,17 @@
+#!/bin/bash
+
+up_delay() {
+   dconf write /org/mate/desktop/peripherals/keyboard/delay 250
+}
+
+shorten_delay() {
+   dconf write /org/mate/desktop/peripherals/keyboard/delay 80
+}
+
+DELAY=$(dconf read /org/mate/desktop/peripherals/keyboard/delay)
+
+if (( DELAY <= 100 )); then
+   up_delay
+else
+   shorten_delay
+fi
