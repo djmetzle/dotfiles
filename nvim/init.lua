@@ -75,7 +75,14 @@ require("lazy").setup({
         changedelete = { text = '~' },
       },
     },
-  }
+  },
+  {
+    "folke/todo-comments.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+    opts = {},
+  },
 })
 
 vim.api.nvim_set_keymap("n", "<Leader>f", ":NvimTreeToggle<cr>", {silent = true, noremap = true})
