@@ -57,11 +57,6 @@ require("lazy").setup({
       require("nvim-tree").setup {}
     end,
   },
-  { 'junegunn/fzf.vim',
-    dependencies = {
-      'junegunn/fzf'
-    }
-  },
   { 'lewis6991/gitsigns.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim'
@@ -92,8 +87,6 @@ require("lazy").setup({
 })
 
 vim.api.nvim_set_keymap("n", "<Leader>f", ":NvimTreeToggle<cr>", {silent = true, noremap = true})
-
-vim.api.nvim_set_keymap("n", "<Leader>z", ":FZF<cr>", {noremap = true})
 
 vim.api.nvim_set_keymap("n", "<Leader><Space>", [[:%s/\s\+$//e<CR>:nohl<CR>]], {noremap = true})
 
