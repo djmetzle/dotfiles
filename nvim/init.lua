@@ -105,6 +105,7 @@ require("lazy").setup({
     },
   },
   'mbbill/undotree',
+  'tpope/vim-fugitive',
 })
 
 vim.api.nvim_set_keymap("n", "<Leader>f", ":NvimTreeToggle<cr>", {silent = true, noremap = true})
@@ -120,3 +121,5 @@ vim.keymap.set('n', '<leader>fp', builtin.git_files, { desc = 'Telescope git fil
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
 vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+
+vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
