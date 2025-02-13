@@ -62,6 +62,20 @@ require("lazy").setup({
       'junegunn/fzf'
     }
   },
+  { 'lewis6991/gitsigns.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim'
+    },
+    opts = {
+      signs = {
+        add = { text = '+' },
+        change = { text = '~' },
+        delete = { text = '_' },
+        topdelete = { text = '‾' },
+        changedelete = { text = '~' },
+      },
+    },
+  }
 })
 
 vim.api.nvim_set_keymap("n", "<Leader>f", ":NvimTreeToggle<cr>", {silent = true, noremap = true})
