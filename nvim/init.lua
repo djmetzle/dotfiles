@@ -104,11 +104,14 @@ require("lazy").setup({
       indent = { enable = true, disable = { 'ruby' } },
     },
   },
+  'mbbill/undotree',
 })
 
 vim.api.nvim_set_keymap("n", "<Leader>f", ":NvimTreeToggle<cr>", {silent = true, noremap = true})
 
 vim.api.nvim_set_keymap("n", "<Leader><Space>", [[:%s/\s\+$//e<CR>:nohl<CR>]], {noremap = true})
+
+vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 
 --- Telescope keybinds
 local builtin = require('telescope.builtin')
