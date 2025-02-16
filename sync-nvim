@@ -1,0 +1,8 @@
+#!/bin/bash
+set -exuo pipefail
+
+CONF_DIR=~/.config/nvim
+mkdir -p "$CONF_DIR" "$CONF_DIR"/lua
+
+cp ./nvim/init.lua "$CONF_DIR/init.lua"
+cp -R ./nvim/lua "$CONF_DIR"/
