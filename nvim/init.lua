@@ -32,7 +32,20 @@ require("lazy").setup({
     config = function()
       vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
     end,
-  }
+  },
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      { 'williamboman/mason.nvim', opts = {} },
+      'williamboman/mason-lspconfig.nvim',
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
+
+      'hrsh7th/cmp-nvim-lsp',
+
+      { 'j-hui/fidget.nvim', opts = {} },
+    },
+  },
+  {'hrsh7th/nvim-cmp'},
 })
 
 vim.api.nvim_set_keymap("n", "<Leader><Space>", [[:%s/\s\+$//e<CR>:nohl<CR>]], {noremap = true})
