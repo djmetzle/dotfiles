@@ -50,8 +50,7 @@ require("lazy").setup({
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
-      'hrsh7th/cmp-nvim-lsp',
-
+      { 'hrsh7th/cmp-nvim-lsp', opts = {} },
       { 'j-hui/fidget.nvim', opts = {} },
     },
     config = function()
@@ -71,10 +70,9 @@ require("lazy").setup({
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
     end,
   },
-  {
-    'hrsh7th/nvim-cmp',
-    opts = {},
-  },
+  { 'hrsh7th/nvim-cmp' },
+  { 'hrsh7th/cmp-buffer' },
+  { 'hrsh7th/cmp-path' },
 })
 
 vim.api.nvim_set_keymap("n", "<Leader><Space>", [[:%s/\s\+$//e<CR>:nohl<CR>]], {noremap = true})
