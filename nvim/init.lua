@@ -52,6 +52,13 @@ require("lazy").setup({
 
       { 'hrsh7th/cmp-nvim-lsp', opts = {} },
       { 'j-hui/fidget.nvim', opts = {} },
+      {
+        'ray-x/lsp_signature.nvim',
+        opts = {},
+        config = function(_, opts)
+          require'lsp_signature'.setup(opts)
+        end,
+      },
     },
     config = function()
       require('lspconfig').clangd.setup({})
