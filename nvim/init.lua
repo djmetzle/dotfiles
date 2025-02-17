@@ -18,10 +18,13 @@ require("lazy").setup({
       indent = { enable = true, disable = { 'ruby' } },
     },
   },
-  'tpope/vim-fugitive',
+  {
+    'tpope/vim-fugitive',
+    opts = {},
+    config = function()
+      vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
+    end,
+  }
 })
 
-
 vim.api.nvim_set_keymap("n", "<Leader><Space>", [[:%s/\s\+$//e<CR>:nohl<CR>]], {noremap = true})
-
-vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
