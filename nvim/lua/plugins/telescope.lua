@@ -6,6 +6,7 @@ return {
       'nvim-telescope/telescope-fzf-native.nvim',
       build = 'make',
     },
+    'nvim-tree/nvim-web-devicons',
   },
   config = function()
     pcall(require('telescope').load_extension, 'fzf')
