@@ -34,6 +34,16 @@ require("lazy").setup({
     end,
   },
   {
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        -- Load luvit types when the `vim.uv` word is found
+        { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+      },
+    },
+  },
+  {
     'neovim/nvim-lspconfig',
     dependencies = {
       { 'williamboman/mason.nvim', opts = {} },
@@ -44,8 +54,27 @@ require("lazy").setup({
 
       { 'j-hui/fidget.nvim', opts = {} },
     },
+    config = function()
+      require('lspconfig').clangd.setup({})
+      require('mason').setup({})
+      require('mason-lspconfig').setup({
+        automatic_installation = false,
+        ensure_installed = {'astro', 'bashls', 'lua_ls', 'rust_analyzer'},
+        handlers = {
+          function(server_name)
+            require('lspconfig')[server_name].setup({})
+          end,
+        },
+      })
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+    end,
   },
-  {'hrsh7th/nvim-cmp'},
+  {
+    'hrsh7th/nvim-cmp',
+    opts = {},
+  },
 })
 
 vim.api.nvim_set_keymap("n", "<Leader><Space>", [[:%s/\s\+$//e<CR>:nohl<CR>]], {noremap = true})
