@@ -3,6 +3,7 @@ require("term")
 
 require("lazyinstall")
 
+ ---@diagnostic disable-next-line: missing-fields
 require("lazy").setup({
   checker = { enabled = true },
   {import = "plugins"},
