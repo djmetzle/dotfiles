@@ -1,6 +1,13 @@
 return {
   'tpope/vim-sleuth',
   {
+    'folke/tokyonight.nvim',
+    priority = 1000,
+    init = function()
+      vim.cmd.colorscheme 'tokyonight-night'
+    end,
+  },
+  {
     "nvim-tree/nvim-tree.lua",
     version = "*",
     lazy = false,

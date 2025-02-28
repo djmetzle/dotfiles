@@ -8,13 +8,6 @@ require("lazy").setup({
   checker = { enabled = true },
   {import = "plugins"},
   {
-    'folke/tokyonight.nvim',
-    priority = 1000,
-    init = function()
-      vim.cmd.colorscheme 'tokyonight-night'
-    end,
-  },
-  {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     main = 'nvim-treesitter.configs',
