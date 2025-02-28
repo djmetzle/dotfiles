@@ -13,6 +13,13 @@ return {
       vim.api.nvim_set_keymap("n", "<Leader>f", ":NvimTreeToggle<cr>", {silent = true, noremap = true})
     end,
   },
+  {
+    'tpope/vim-fugitive',
+    opts = {},
+    config = function()
+      vim.keymap.set('n', '<leader>gs', vim.cmd.Git)
+    end,
+  },
   { 'lewis6991/gitsigns.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim'
