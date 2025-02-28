@@ -131,15 +131,6 @@ require("lazy").setup({
       })
     end,
   },
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' },
-    config = function()
-      require('lualine').setup({
-        options = { theme = 'codedark' }
-      })
-    end,
-  },
 })
 
 vim.api.nvim_set_keymap("n", "<Leader><Space>", [[:%s/\s\+$//e<CR>:nohl<CR>]], {noremap = true})
