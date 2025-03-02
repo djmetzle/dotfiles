@@ -12,6 +12,18 @@ return {
   { "nyoom-engineering/oxocarbon.nvim", name = "oxocarbon" },
   { "joshdick/onedark.vim", name = "onedark" },
   { "cschlueter/vim-wombat", name = "wombat" },
+  { 'alexghergh/nvim-tmux-navigation', config = function()
+      require('nvim-tmux-navigation').setup({
+        disable_when_zoomed = true,
+        keybindings = {
+          left = "<C-h>",
+          down = "<C-j>",
+          up = "<C-k>",
+          right = "<C-l>",
+        }
+      })
+    end
+  },
   {
     "nvim-tree/nvim-tree.lua",
     version = "*",
