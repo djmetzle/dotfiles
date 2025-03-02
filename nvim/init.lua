@@ -5,8 +5,8 @@ require("lazyinstall")
 
  ---@diagnostic disable-next-line: missing-fields
 require("lazy").setup({
+  import = "plugins",
   checker = { enabled = true },
-  {import = "plugins"},
 })
 
 vim.api.nvim_set_keymap("n", "<Leader><Space>", [[:%s/\s\+$//e<CR>:nohl<CR>]], {noremap = true})
