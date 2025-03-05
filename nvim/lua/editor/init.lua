@@ -33,6 +33,8 @@ vim.opt.cursorline = true
 
 vim.opt.scrolloff = 8
 
+vim.api.nvim_set_keymap("n", "<Leader><Space>", [[:%s/\s\+$//e<CR>:nohl<CR>]], { noremap = true })
+
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })

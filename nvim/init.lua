@@ -1,4 +1,5 @@
 require("editor")
+
 require("term")
 
 require("lazyinstall")
@@ -8,8 +9,6 @@ require("lazy").setup({
   import = "plugins",
   checker = { enabled = true },
 })
-
-vim.api.nvim_set_keymap("n", "<Leader><Space>", [[:%s/\s\+$//e<CR>:nohl<CR>]], { noremap = true })
 
 local function quickfix()
   vim.lsp.buf.code_action({
