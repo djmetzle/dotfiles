@@ -7,9 +7,19 @@ return {
       build = "make",
     },
     "nvim-tree/nvim-web-devicons",
+    { "nvim-telescope/telescope-ui-select.nvim" },
   },
   config = function()
+    require("telescope").setup({
+      extensions = {
+        ["ui-select"] = {
+          require("telescope.themes").get_dropdown(),
+        },
+      },
+    })
+
     pcall(require("telescope").load_extension, "fzf")
+    pcall(require("telescope").load_extension, "ui-select")
 
     local builtin = require("telescope.builtin")
     vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
