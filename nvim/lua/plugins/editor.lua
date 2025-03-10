@@ -24,7 +24,7 @@ return {
     config = function()
       require("nvim-tree").setup({})
 
-      vim.api.nvim_set_keymap("n", "<Leader>f", ":NvimTreeToggle<cr>", { silent = true, noremap = true })
+      vim.api.nvim_set_keymap("n", "<Leader>ft", ":NvimTreeToggle<cr>", { silent = true, noremap = true })
     end,
   },
   {
