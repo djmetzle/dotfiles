@@ -15,6 +15,13 @@ return {
     end,
   },
   {
+    "echasnovski/mini.nvim",
+    config = function()
+      require("mini.files").setup()
+      vim.keymap.set("n", "<leader>e", MiniFiles.open)
+    end,
+  },
+  {
     "nvim-tree/nvim-tree.lua",
     version = "*",
     lazy = false,
