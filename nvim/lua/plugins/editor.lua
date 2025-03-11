@@ -15,6 +15,11 @@ return {
     end,
   },
   {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+  },
+  {
     "echasnovski/mini.nvim",
     config = function()
       require("mini.files").setup()
