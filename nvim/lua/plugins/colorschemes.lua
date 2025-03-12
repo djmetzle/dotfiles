@@ -5,6 +5,12 @@ return {
     init = function()
       vim.cmd.colorscheme("tokyonight-night")
     end,
+    config = function()
+      require("tokyonight").setup({
+        style = "night",
+        transparent = true,
+      })
+    end,
   },
   { "catppuccin/nvim", name = "catppuccin" },
   { "rose-pine/neovim", name = "rose-pine" },
