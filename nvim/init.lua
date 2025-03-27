@@ -1,6 +1,7 @@
 require("editor")
 
 require("term")
+require("todo")
 
 require("lazyinstall")
 
