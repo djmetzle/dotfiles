@@ -10,3 +10,5 @@ vim.keymap.set("n", "<leader>t", function()
   vim.cmd.new()
   vim.cmd.term()
 end)
+
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-N>")
