@@ -105,6 +105,8 @@ return {
           map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 
           map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+
+          map("<leader>lk", vim.diagnostic.open_float, "Open Diags (floating)")
         end,
       })
 
