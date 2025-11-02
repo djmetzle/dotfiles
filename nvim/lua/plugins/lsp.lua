@@ -71,7 +71,6 @@ return {
       },
     },
     config = function()
-      require("lspconfig").clangd.setup({})
       require("mason").setup({})
 
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -142,10 +141,10 @@ return {
 
       require("mason-lspconfig").setup({
         automatic_installation = false,
-        ensure_installed = { "astro", "bashls", "lua_ls", "rust_analyzer" },
+        ensure_installed = { "biome", "astro", "bashls", "lua_ls", "rust_analyzer" },
         handlers = {
           function(server_name)
-            require("lspconfig")[server_name].setup({})
+            vim.lsp.enable(server_name)
           end,
         },
       })
