@@ -2,46 +2,42 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    main = "nvim-treesitter.configs",
     dependencies = {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      lazy = true,
-      config = function()
-        ---@diagnostic disable-next-line: missing-fields
-        require("nvim-treesitter.configs").setup({
-          textobjects = {
-            select = {
-              enable = true,
-              lookahead = true,
-            },
+      { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
+    },
+    config = function()
+      ---@diagnostic disable-next-line: missing-fields
+      require("nvim-treesitter.config").setup({
+        ensure_installed = {
+          "bash",
+          "c",
+          "diff",
+          "html",
+          "lua",
+          "luadoc",
+          "markdown",
+          "markdown_inline",
+          "query",
+          "vim",
+          "vimdoc",
+          "ruby",
+          "php",
+          "astro",
+        },
+        auto_install = true,
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = { "ruby" },
+        },
+        indent = { enable = true, disable = { "ruby" } },
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,
           },
-        })
-      end,
-    },
-    opts = {
-      ensure_installed = {
-        "bash",
-        "c",
-        "diff",
-        "html",
-        "lua",
-        "luadoc",
-        "markdown",
-        "markdown_inline",
-        "query",
-        "vim",
-        "vimdoc",
-        "ruby",
-        "php",
-        "astro",
-      },
-      auto_install = true,
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = { "ruby" },
-      },
-      indent = { enable = true, disable = { "ruby" } },
-    },
+        },
+      })
+    end,
   },
   {
     "folke/lazydev.nvim",
@@ -60,8 +56,8 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
 
-      { "hrsh7th/cmp-nvim-lsp", opts = {} },
-      { "j-hui/fidget.nvim", opts = {} },
+      { "hrsh7th/cmp-nvim-lsp",    opts = {} },
+      { "j-hui/fidget.nvim",       opts = {} },
       {
         "ray-x/lsp_signature.nvim",
         opts = {},
