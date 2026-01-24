@@ -28,11 +28,11 @@
     - name: Configure git
       ansible.builtin.include_tasks: tasks/git.yml
 
-    - name: Configure neovim
-      ansible.builtin.include_tasks: tasks/neovim.yml
-
     - name: Configure kitty
       ansible.builtin.include_tasks: tasks/kitty.yml
 
     - name: Configure tmux
       ansible.builtin.include_tasks: tasks/tmux.yml
+
+    - name: Configure neovim
+      ansible.builtin.include_tasks: tasks/neovim.yml
