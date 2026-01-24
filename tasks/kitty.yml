@@ -1,10 +1,4 @@
 ---
-- name: Install kitty
-  ansible.builtin.dnf:
-    name: kitty
-    state: present
-  become: true
-
 - name: Copy kitty config
   ansible.builtin.copy:
     src: "{{ playbook_dir }}/kitty/"

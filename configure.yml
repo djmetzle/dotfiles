@@ -5,9 +5,16 @@
 
   vars:
     packages:
-      - jq
       - fd-find
+      - gh
+      - git
+      - git-delta
+      - jq
+      - kitty
+      - neovim
       - ripgrep
+      - shellcheck
+      - tmux
 
   tasks:
     - name: Install packages
