@@ -19,3 +19,6 @@
 
     - name: Configure git
       ansible.builtin.include_tasks: tasks/git.yml
+
+    - name: Configure neovim
+      ansible.builtin.include_tasks: tasks/neovim.yml

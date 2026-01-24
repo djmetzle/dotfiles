@@ -1,0 +1,13 @@
+---
+- name: Install neovim and linters
+  ansible.builtin.dnf:
+    name:
+      - neovim
+      - shellcheck
+    state: present
+  become: true
+
+- name: Copy nvim config
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/nvim/"
+    dest: ~/.config/nvim/
