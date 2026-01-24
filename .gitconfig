@@ -1,17 +1,25 @@
 [user]
-	name = Daryl Metzler
-	email = djmetzle@ncsu.edu
+	name = metz
+	email = daryljmetzler@gmail.com
+
+[core]
+	editor = nvim
 
 [color]
 	ui = true
 
 [alias]
-	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative master..HEAD
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative main..HEAD
+	lm = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative master..HEAD
 	lg   = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	st = status
 	co = checkout
+	cop = checkout -p
 	b = branch
 	d = diff
 	dc = diff --cached
 	ap = add --patch
 	shit = reset
+
+[init]
+	defaultBranch = main
