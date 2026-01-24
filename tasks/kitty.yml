@@ -1,0 +1,26 @@
+---
+- name: Install kitty
+  ansible.builtin.dnf:
+    name: kitty
+    state: present
+  become: true
+
+- name: Copy kitty config
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/kitty/"
+    dest: ~/.config/kitty/
+
+- name: Create fonts directory
+  ansible.builtin.file:
+    path: ~/.local/share/fonts
+    state: directory
+
+- name: Download SourceCodePro Nerd Font
+  ansible.builtin.unarchive:
+    src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/SourceCodePro.zip
+    dest: ~/.local/share/fonts
+    remote_src: true
+
+- name: Refresh font cache
+  ansible.builtin.command: fc-cache -fv
+  changed_when: false

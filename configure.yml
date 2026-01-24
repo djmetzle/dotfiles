@@ -5,7 +5,6 @@
 
   vars:
     packages:
-      - kitty
       - jq
       - fd-find
       - ripgrep
@@ -22,3 +21,6 @@
 
     - name: Configure neovim
       ansible.builtin.include_tasks: tasks/neovim.yml
+
+    - name: Configure kitty
+      ansible.builtin.include_tasks: tasks/kitty.yml
