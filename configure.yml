@@ -24,3 +24,6 @@
 
     - name: Configure kitty
       ansible.builtin.include_tasks: tasks/kitty.yml
+
+    - name: Configure tmux
+      ansible.builtin.include_tasks: tasks/tmux.yml
