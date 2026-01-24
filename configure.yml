@@ -5,6 +5,8 @@
 
   vars:
     packages:
+      - bat
+      - chromium-browser
       - fd-find
       - gh
       - git
