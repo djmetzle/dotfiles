@@ -1,0 +1,10 @@
+---
+- name: Create zellij config directory
+  ansible.builtin.file:
+    path: ~/.config/zellij
+    state: directory
+
+- name: Copy zellij config
+  ansible.builtin.copy:
+    src: "{{ playbook_dir }}/zellij/"
+    dest: ~/.config/zellij/

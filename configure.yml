@@ -17,6 +17,7 @@
       - ripgrep
       - shellcheck
       - tmux
+      - zellij
 
   tasks:
     - name: Install packages
@@ -36,3 +37,6 @@
 
     - name: Configure neovim
       ansible.builtin.include_tasks: tasks/neovim.yml
+
+    - name: Configure zellij
+      ansible.builtin.include_tasks: tasks/zellij.yml
