@@ -1,0 +1,6 @@
+{
+  "statusLine": {
+    "type": "command",
+    "command": "jq -r '\"\\(.model.display_name // \"unknown\")  |  \\(.workspace.project_dir // \"--\" | split(\"/\") | last)  |  \\(.workspace.current_dir // .cwd // \"--\" | split(\"/\") | last)  |  \\(.context_window.total_input_tokens // 0 | . / 1000 * 10 | floor / 10 | tostring + \"k\") tokens  |  \\(.context_window.used_percentage // 0 | round)% used\"'"
+  }
+}
