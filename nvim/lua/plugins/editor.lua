@@ -60,6 +60,10 @@ return {
         changedelete = { text = "~" },
       },
     },
+    config = function(_, opts)
+      require("gitsigns").setup(opts)
+      vim.keymap.set("n", "<leader>gl", "<cmd>Gitsigns setqflist all<cr>", { desc = "Gitsigns: all hunks to quickfix" })
+    end,
   },
   {
     "folke/todo-comments.nvim",
