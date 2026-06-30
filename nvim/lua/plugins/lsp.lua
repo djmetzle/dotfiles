@@ -1,42 +1,86 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     build = ":TSUpdate",
     dependencies = {
       { "nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
     },
     config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require("nvim-treesitter.config").setup({
-        ensure_installed = {
-          "bash",
-          "c",
-          "diff",
-          "html",
-          "lua",
-          "luadoc",
-          "markdown",
-          "markdown_inline",
-          "query",
-          "vim",
-          "vimdoc",
-          "ruby",
-          "php",
-          "astro",
-        },
-        auto_install = true,
-        highlight = {
-          enable = true,
-          additional_vim_regex_highlighting = { "ruby" },
-        },
-        indent = { enable = true, disable = { "ruby" } },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-          },
-        },
+      require("nvim-treesitter").setup()
+
+      require("nvim-treesitter").install({
+        "bash",
+        "c",
+        "diff",
+        "html",
+        "lua",
+        "luadoc",
+        "markdown",
+        "markdown_inline",
+        "query",
+        "vim",
+        "vimdoc",
+        "ruby",
+        "php",
+        "astro",
       })
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("treesitter-start", { clear = true }),
+        callback = function(args)
+          local buf = args.buf
+          local ft = vim.bo[buf].filetype
+          local lang = vim.treesitter.language.get_lang(ft)
+          if not lang then
+            return
+          end
+          if not pcall(vim.treesitter.start, buf, lang) then
+            return
+          end
+          if ft == "ruby" then
+            vim.bo[buf].syntax = "on"
+          else
+            vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
+      })
+
+      require("nvim-treesitter-textobjects").setup({
+        select = { lookahead = true },
+        move = { set_jumps = true },
+      })
+
+      local ts_select = require("nvim-treesitter-textobjects.select")
+      local ts_move = require("nvim-treesitter-textobjects.move")
+      local ts_swap = require("nvim-treesitter-textobjects.swap")
+
+      vim.keymap.set({ "x", "o" }, "af", function()
+        ts_select.select_textobject("@function.outer", "textobjects")
+      end, { desc = "Select outer function" })
+      vim.keymap.set({ "x", "o" }, "if", function()
+        ts_select.select_textobject("@function.inner", "textobjects")
+      end, { desc = "Select inner function" })
+      vim.keymap.set({ "x", "o" }, "ac", function()
+        ts_select.select_textobject("@class.outer", "textobjects")
+      end, { desc = "Select outer class" })
+      vim.keymap.set({ "x", "o" }, "ic", function()
+        ts_select.select_textobject("@class.inner", "textobjects")
+      end, { desc = "Select inner class" })
+
+      vim.keymap.set({ "n", "x", "o" }, "]f", function()
+        ts_move.goto_next_start("@function.outer", "textobjects")
+      end, { desc = "Next function start" })
+      vim.keymap.set({ "n", "x", "o" }, "[f", function()
+        ts_move.goto_previous_start("@function.outer", "textobjects")
+      end, { desc = "Prev function start" })
+
+      vim.keymap.set("n", "<leader>sn", function()
+        ts_swap.swap_next("@parameter.inner")
+      end, { desc = "Swap next parameter" })
+      vim.keymap.set("n", "<leader>sp", function()
+        ts_swap.swap_previous("@parameter.inner")
+      end, { desc = "Swap previous parameter" })
     end,
   },
   {
@@ -56,8 +100,8 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
 
-      { "hrsh7th/cmp-nvim-lsp",    opts = {} },
-      { "j-hui/fidget.nvim",       opts = {} },
+      { "hrsh7th/cmp-nvim-lsp", opts = {} },
+      { "j-hui/fidget.nvim", opts = {} },
       {
         "ray-x/lsp_signature.nvim",
         opts = {},
@@ -137,7 +181,7 @@ return {
 
       require("mason-lspconfig").setup({
         automatic_installation = false,
-        ensure_installed = { "biome", "astro", "bashls", "lua_ls", "rust_analyzer" },
+        ensure_installed = { "biome", "bashls", "lua_ls", "rust_analyzer" },
         handlers = {
           function(server_name)
             vim.lsp.enable(server_name)
